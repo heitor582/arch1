@@ -11,21 +11,20 @@ module Guia_0303;
     reg signed[6:0] dr = 0;
     reg signed[7:0] e = 8'b11110101;
     reg signed[7:0] er = 0;
-    initial
-        begin : main
-            $display ( "Atividade 2 resultado" );
-            
-            $display ( "c2(a) = %b -> (a)_(10) = %2d" , a, ~(a-1) );
-            
-            $display ( "c2(b) = %b -> (b)_(10) = %2d" , b, ~(b-1)  );
+    initial begin : main
+        $display ( "Atividade 3 resultado" );
+        
+        $display ( "c2(a) = %b -> (a)_(10) = %2d" , a, ~(a-1) );
+        
+        $display ( "c2(b) = %b -> (b)_(10) = %2d" , b, ~(b-1)  );
 
-            cr = ~(c-1);
-            $display ( "c2(c) = %b -> (c)_(2) = %5b", c, cr );
+        cr = ~(c-1);
+        $display ( "c2(c) = %b -> (c)_(2) = %5b", c, cr );
 
-            dr = ~(d-1);
-            $display ( "c2(d) = %b -> (d)_(2) = %7b", d, dr );
+        dr = ~(d-1);
+        $display ( "c2(d) = %b -> (d)_(2) = %7b", d, dr );
 
-            er = ~(e-1);
-            $display ( "c2(e) = %b -> (e)_(16) = %1x", e, er );
-        end // main
+        er = ~(e-1);
+        $display ( "c2(e) = %b -> (e)_(16) = %1x", e, er );
+    end // main
 endmodule
