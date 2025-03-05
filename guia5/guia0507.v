@@ -7,7 +7,11 @@ module normalFunction ( output s, input a, input b );
     assign s = ~( ~a ^ ~b );
 endmodule
 
-module functionOnlyNor ( output s, input a, input b );
+module notNor ( output s, input a );
+    nor NOR_1 (s, a, a);  
+endmodule
+
+module xorNor ( output s, input a, input b );
     wire NOT_1, NOT_2, AND_1, AND_2, XNOR_1;
     nor NOR_1 (NOT_1, a, a);  
     nor NOR_2 (NOT_2, b, b); 
@@ -17,6 +21,14 @@ module functionOnlyNor ( output s, input a, input b );
 
     nor NOR_5 (XNOR_1, AND_1, AND_2); 
     nor NOR_6 (s, XNOR_1, XNOR_1); 
+endmodule
+
+module functionOnlyNor ( output s, input a, input b );
+    wire not_a, not_b, xor_1;
+    notNor notNorA(not_a,a);
+    notNor notNorB(not_b,b);
+    xorNor xorNor(xor_1, not_a,not_b);
+    notNor xnor_1(s, xor_1);
 endmodule
 
 module Guia_0507;

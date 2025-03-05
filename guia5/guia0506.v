@@ -4,12 +4,16 @@ Guia_0506.v
 */
 
 module normalFunction ( output s, input a, input b );
-    assign s = ~(a ^ b);// AB + A'B'
+    assign s = ~(a ^ b);
 endmodule
 
 module functionOnlyNand ( output s, input a, input b );
-
-
+    wire nand_1, nand_2, nand_3, nand_4;
+    nand NAND_1 (nand_1, a, b);  
+    nand NAND_2 (nand_2, nand_1, b);  
+    nand NAND_3 (nand_3, a, nand_1);
+    nand NAND_4 (nand_4, nand_2, nand_3);
+    nand NAND_5 (s, nand_4, nand_4);
 endmodule
 
 module Guia_0506;
