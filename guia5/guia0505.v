@@ -4,19 +4,18 @@ Guia_0505.v
 */
 
 module normalFunction ( output s, input a, input b );
-    assign s = (a ^ b);// (a & b') | (a' & b)
+    assign s = (a ^ b);// ((a&b) || (a|b)')'
 endmodule
 
 module functionOnlyNor ( output s, input a, input b );
-    wire NOT_1, NOT_2, AND_1, AND_2, XNOR_1;
+    wire AND_1, NOT_1, NOT_2, nor_4;
     nor NOR_1 (NOT_1, a, a);  
     nor NOR_2 (NOT_2, b, b); 
 
-    nor NOR_3 (AND_1, a, NOT_2);
-    nor NOR_4 (AND_2, NOT_1, b);
+    nor NOR_3 (AND_1, NOT_1, NOT_2);
 
-    nor NOR_5 (XNOR_1, AND_1, AND_2); 
-    nor NOR_6 (s, XNOR_1, XNOR_1); 
+    nor NOR_4 (nor_4, a, b);
+    nor NOR_5(s, AND_1, nor_4);
 endmodule
 
 module Guia_0505;

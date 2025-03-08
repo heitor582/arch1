@@ -8,7 +8,7 @@ module normalFunction ( output s, input a, input b );
 endmodule
 
 module functionOnlyNand ( output s, input a, input b ); 
-    nand NAND_2 (s, a, b);  
+    nand NAND_1 (s, a, b);  
 endmodule
 
 module Guia_0508;
