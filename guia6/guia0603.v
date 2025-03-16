@@ -4,7 +4,7 @@ Guia_0603.v
 */
 
 module SoPA ( output s, input a, input b, input c, input d );
-    assign s = (~a&~b&~c&d) + (~a&~b&c&~d) + (~a&b&c&~d) + (a&~b&~c&~d) + (a&b&~c&~d) + (a&b&c&~d);
+    assign s = (~a&~b&~c&d) | (~a&~b&c&~d) | (~a&b&c&~d) | (a&~b&~c&~d) | (a&b&~c&~d) | (a&b&c&~d);
 endmodule
 
 module minimizedFunctionA ( output s, input a, input b, input c, input d );
@@ -12,7 +12,7 @@ module minimizedFunctionA ( output s, input a, input b, input c, input d );
 endmodule
 
 module SoPB ( output s, input a, input b, input c, input d );
-    assign s = (~a&~b&~c&~d) + (~a&~b&~c&d) + (~a&~b&c&d) + (~a&b&c&d) + (a&~b&~c&~d) + (a&b&~c&~d) + (a&b&c&d);
+    assign s = (~a&~b&~c&~d) | (~a&~b&~c&d) | (~a&~b&c&d) | (~a&b&c&d) | (a&~b&~c&~d) | (a&b&~c&~d) | (a&b&c&d);
 endmodule
 
 module minimizedFunctionB ( output s, input a, input b, input c, input d );
@@ -20,7 +20,7 @@ module minimizedFunctionB ( output s, input a, input b, input c, input d );
 endmodule
 
 module SoPC ( output s, input a, input b, input c, input d );
-    assign s = (~a&~b&~c&~d) + (~a&~b&~c&d) + (~a&~b&c&~d) + (~a&b&c&d) + (a&~b&c&~d) + (a&~b&c&d) + (a&b&c&~d) + (a&b&c&d);
+    assign s = (~a&~b&~c&~d) | (~a&~b&~c&d) | (~a&~b&c&~d) | (~a&b&c&d) | (a&~b&c&~d) | (a&~b&c&d) | (a&b&c&~d) | (a&b&c&d);
 endmodule
 
 module minimizedFunctionC ( output s, input a, input b, input c, input d );
@@ -28,7 +28,7 @@ module minimizedFunctionC ( output s, input a, input b, input c, input d );
 endmodule
 
 module SoPD ( output s, input a, input b, input c, input d );
-    assign s = (~a&~b&c&~d) + (~a&b&~c&~d) + (~a&b&~c&d) + (~a&b&c&~d) + (a&~b&c&~d) + (a&b&~c&d) + (a&b&c&~d);
+    assign s = (~a&~b&c&~d) | (~a&b&~c&~d) | (~a&b&~c&d) | (~a&b&c&~d) | (a&~b&c&~d) | (a&b&~c&d) | (a&b&c&~d);
 endmodule
 
 module minimizedFunctionD ( output s, input a, input b, input c, input d );
@@ -36,7 +36,7 @@ module minimizedFunctionD ( output s, input a, input b, input c, input d );
 endmodule
 
 module SoPE ( output s, input a, input b, input c, input d );
-    assign s = (~a&~b&~c&~d) + (~a&~b&~c&d) + (~a&~b&c&d) + (~a&b&~c&d) + (a&~b&~c&~d) + (a&~b&~c&d) + (a&~b&c&d) + (a&b&~c&d);
+    assign s = (~a&~b&~c&~d) | (~a&~b&~c&d) | (~a&~b&c&d) | (~a&b&~c&d) | (a&~b&~c&~d) | (a&~b&~c&d) | (a&~b&c&d) | (a&b&~c&d);
 endmodule
 
 module minimizedFunctionE ( output s, input a, input b, input c, input d );
