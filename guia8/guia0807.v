@@ -3,22 +3,24 @@ Guia_0806.v
 867936-heitor_vieira
 */
 module comparatorE (output s1, input [5:0] a, input[5:0] b);
-    wire x1,x2,x3,x4,x5;
+    wire x1,x2,x3,x4,x5,x6;
     xnor XNOR1(x1, a[0], b[0]);
     xnor XNOR2(x2, a[1], b[1]);
     xnor XNOR3(x3, a[2], b[2]);
     xnor XNOR4(x4, a[3], b[3]);
     xnor XNOR5(x5, a[4], b[4]);
-    and AND1(s1,x1,x2,x3,x4,x5);
+    xnor XNOR6(x6, a[5], b[5]);
+    and AND1(s1,x1,x2,x3,x4,x5, x6);
 endmodule
 module comparatorD (output s1, input [5:0] a, input[5:0] b);
-    wire x1,x2,x3,x4,x5;
+    wire x1,x2,x3,x4,x5,x6;
     xor XOR1(x1, a[0], b[0]);
     xor XOR2(x2, a[1], b[1]);
     xor XOR3(x3, a[2], b[2]);
     xor XOR4(x4, a[3], b[3]);
     xor XOR5(x5, a[4], b[4]);
-    or OR1(s1,x1,x2,x3,x4,x5);
+    xor XOR6(x6, a[5], b[5]);
+    or OR1(s1,x1,x2,x3,x4,x5,x6);
 endmodule
 module mux ( output s, input a, input b, input select );
     wire not_select;
