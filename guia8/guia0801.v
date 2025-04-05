@@ -32,7 +32,7 @@ module Guia_0801;
     fullAdder FA1(sumR[1], carry[1], x[1], y[1], carry[0]);
     fullAdder FA2(sumR[2], carry[2], x[2], y[2], carry[1]);
     fullAdder FA3(sumR[3], carry[3], x[3], y[3], carry[2]);
-    fullAdder FA3(sumR[4], carry[4], x[4], y[4], carry[3]);
+    fullAdder FA4(sumR[4], carry[4], x[4], y[4], carry[3]);
     assign sumR[5]=carry[4];
     initial begin : main
         x = 4'b1010;
