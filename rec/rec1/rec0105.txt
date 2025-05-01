@@ -1,0 +1,10 @@
+5)
+a)o valor binário igual a C2,8(53(10))
+53_(10) = 110101_(2)
+C_2,8(53_(10)) = 00110101 -> 11001011
+resposta = 11001011
+
+b)a distância Hamming entre os valores C6_(16) e 3231_(4)=
+1100 0110 e 1110 1101
+11_0 _1__
+resposta = dH 4

@@ -1,0 +1,91 @@
+1-
+    https://aberto.univem.edu.br/bitstream/handle/11077/297/RtrASSoc51+%13+M%F3dulo+de+Comunica%E7%E3o+I2C+Reconfigur%E1vel+%13+rI2C.pdf?sequence=1
+    Os projetos "O CPLD aplicado em automação industrial" e "RTRASSoc51 – Módulo de Comunicação I2C Reconfigurável" falam sobre como usar dispositivos programáveis em sistemas digitais. 
+    O primeiro projeto usa CPLDs da família MAX 3000A da Altera para criar controladores lógicos baratos e eficientes para automação industrial. 
+    O segundo projeto tenta implementar o protocolo rI2C em FPGAs da Xilinx, para que sistemas embarcados possam se comunicar com taxas de transmissão ajustáveis. 
+    Ambos os projetos utilizam ferramentas de design eletrônico e linguagens de programação de hardware, mostrando como os dispositivos programáveis são boas opções para projetos de automação e sistemas embarcados, por serem econômicos e eficientes.
+
+2-
+@book{chan1994,
+  author    = {Pak K. Chan and Samiha Mourad},
+  title     = {Digital System Design Using Field Programmable Gate Arrays},
+  publisher = {Prentice-Hall, Inc.},
+  year      = {1994},
+  month = {apr},
+  address   = {United States},
+}
+
+@misc{shackelford2000,
+  author    = {Kenneth Shackelford},
+  title     = {Introduction to FPGAs},
+  year      = {2000},
+}
+
+@book{brown1996,
+  author    = {Stephen D. Brown and Zvonko G. Vranesic},
+  title     = {Fundamentals of Digital Logic with VHDL Design},
+  publisher = {McGraw-Hill},
+  year      = {1996},
+  address   = {New York},
+}
+
+@phdthesis{ribeiro2002,
+  author = {RIBEIRO, A. A. L.},
+  title = {Reconfigurabilidade dinâmica e remota de FPGAs},
+  school = {Universidade de São Paulo -- ICMC},
+  address = {São Carlos -- SP},
+  year = {2002},
+  month = {jul},
+}
+
+3-
+ASIC(Application Specific IC)
+    Customizações
+    Alto custo
+    Longo tempo de desenvolvimento
+    Em caso de grandes implementações o custo é amortizado
+ASSP
+    Um ASIC para um propósito mais geral e é usado por diferentes sistemas e projetos
+SOC
+    Um ASIC ou um ASSP com um ou mais processadores
+SPLD(Simple Programmable Logic Device)
+    Agrupamento dos PLAs, PALs, PLDs
+    Baixo custo e alto desempenho
+CPLD(Complex Programmable Logic Device)
+    Maior capacidade que os SPLD
+    Integração de vários SPLD em um único chip com interconexão programável entre eles
+    Alta durabilidade mesmo em ambientes agressivos
+    Pode ser re-configurado cerca 1_000_000
+    Velocidade de resposta sendo na ordem de nano segundos
+    Facilidade com o ambiente windowns
+    Baixo custo
+FPGA(Field Programmable Gate Array)
+    Um grande arranjo de células configuráveis em um único chip
+    Reduzido tempo de projeto e baixo custo com alta capacidade
+
+4-
+PROM(programmable read-only memory)
+    Primeiro chip programável pelo usuário
+    Arquitetura ineficiente para circuitos lógicos
+PLA(Programmable Logic Arrays)
+    Desenvolvidos especificamente para implementação de circuitos lógicos
+    Adequado para implementação de SoP
+    Alto custo de fabricação devido aos dois níveis de lógica configurável
+PAL(Programmable Array Logic)
+    Único nível de programação
+    Custo mais baixo e maior desempenho comparado com as PLAs
+
+5-
+CPLD(Complex Programmable Logic Device)
+    Maior capacidade que os SPLD
+    Integração de vários SPLD em um único chip com interconexão programável entre eles
+    Alta durabilidade mesmo em ambientes agressivos
+    Pode ser re-configurado cerca 1_000_000
+    Velocidade de resposta sendo na ordem de nano segundos
+    Facilidade com o ambiente windowns
+    Baixo custo
+FPGA(Field Programmable Gate Array)
+    Um grande arranjo de células configuráveis em um único chip
+    Reduzido tempo de projeto e baixo custo com alta capacidade superior aos CPLD
+
+
