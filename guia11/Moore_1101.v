@@ -42,7 +42,6 @@ module moore_1101 (y, x, clk, reset);
   reg [2:0] E1; // Current state
   reg [2:0] E2; // Next state
 
-  // Next state logic
   always @(x or E1) begin
     case (E1)
       start:
@@ -75,7 +74,7 @@ module moore_1101 (y, x, clk, reset);
         else
           E2 = start;
 
-      default: // Undefined state
+      default:
         E2 = 3'bxxx;
     endcase
   end
@@ -83,9 +82,9 @@ module moore_1101 (y, x, clk, reset);
   // State variable update
   always @(posedge clk or negedge reset) begin
     if (reset)
-      E1 <= E2; // Update current state
+      E1 <= E2;
     else
-      E1 <= 0;  // Reset
+      E1 <= 0;
   end
 
   // Output logic (Moore FSM: output depends only on state)

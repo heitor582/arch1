@@ -17,7 +17,6 @@ module moore_1010 (y, x, clk, reset);
 
   reg y;
 
-  // State identifiers
   parameter
     start  = 3'b000,
     id1    = 3'b001,
@@ -25,10 +24,9 @@ module moore_1010 (y, x, clk, reset);
     id101  = 3'b010,
     id1010  = 3'b100;
 
-  reg [2:0] E1; // Current state
-  reg [2:0] E2; // Next state
+  reg [2:0] E1;
+  reg [2:0] E2;
 
-  // Next state logic
   always @(x or E1) begin
     case (E1)
       start:
@@ -61,12 +59,11 @@ module moore_1010 (y, x, clk, reset);
         else
           E2 = start;
 
-      default: // Undefined state
+      default:
         E2 = 3'bxxx;
     endcase
   end
 
-  // State variable update
   always @(posedge clk or negedge reset) begin
     if (reset)
       E1 <= E2; // Update current state
@@ -74,9 +71,8 @@ module moore_1010 (y, x, clk, reset);
       E1 <= 0;  // Reset
   end
 
-  // Output logic (Moore FSM: output depends only on state)
   always @(E1) begin
-    y = E1[2]; // Output is 1 only for id1101 (when MSB is 1)
+    y = E1[2];
   end
 
 endmodule 

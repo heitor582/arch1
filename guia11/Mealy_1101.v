@@ -30,7 +30,6 @@ module mealy_1101 (y, x, clk, reset);
 
   reg y;
 
-  // State identifiers
   parameter
     start  = 2'b00,
     id1    = 2'b01,
@@ -71,7 +70,7 @@ module mealy_1101 (y, x, clk, reset);
           y = `notfound;
         end
 
-      default: // Undefined state
+      default:
         E2 = 2'bxx;
     endcase
   end
@@ -79,9 +78,9 @@ module mealy_1101 (y, x, clk, reset);
   // State variable update
   always @(posedge clk or negedge reset) begin
     if (reset)
-      E1 <= E2; // Update current state
+      E1 <= E2;
     else
-      E1 <= 0;  // Reset
+      E1 <= 0;
   end
 
 endmodule // mealy_1101

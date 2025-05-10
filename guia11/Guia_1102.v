@@ -61,12 +61,11 @@ module mealy_1010 (output reg y, input x, input clk, input reset);
     endcase
   end
 
-  // State variable update
   always @(posedge clk or negedge reset) begin
     if (reset)
-      E1 <= E2; // Update current state
+      E1 <= E2;
     else
-      E1 <= 0;  // Reset
+      E1 <= 0;
   end
 
 endmodule
