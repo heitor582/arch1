@@ -61,11 +61,11 @@ module tb_ram4x16;
     $display("Time | clr prst we addr din             dout");
     $monitor("%4t |  %b   %b   %b  %02b  %016b %016b", $time, clear, preset, we, address, din, dout);
 
-    // Reset assíncrono
+    // Reset
     clear = 1; preset = 0; we = 0; address = 0; din = 16'b0;
     #10 clear = 0;
 
-    // Preset assíncrono
+    // Preset
     #10 preset = 1;
     #10 preset = 0;
 
@@ -75,7 +75,7 @@ module tb_ram4x16;
     #10 address = 2'b10; din = 16'hFF00;           // 1111111100000000
     #10 address = 2'b11; din = 16'h00FF;           // 0000000011111111
 
-    // Parar escrita, ler dados de cada endereço
+    // Parar escrita ler dados de cada endereço
     we = 0; din = 16'b0;
     #10 address = 2'b00;
     #10 address = 2'b01;

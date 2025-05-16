@@ -56,17 +56,17 @@ module tb_ram2x8;
     .dout(dout)
   );
 
-  always #5 clk = ~clk; // clock 10 unidades de tempo
+  always #5 clk = ~clk;
 
   initial begin
     $display("Time | clr prst we addr din      dout");
     $monitor("%4t |  %b   %b   %b    %b   %08b %08b", $time, clear, preset, we, address, din, dout);
 
-    // Reset assíncrono
+    // Reset
     clear = 1; preset = 0; we = 0; address = 0; din = 8'b0;
     #10 clear = 0;
 
-    // Preset assíncrono
+    // Preset
     #10 preset = 1;
     #10 preset = 0;
 
@@ -78,11 +78,11 @@ module tb_ram2x8;
     address = 1; din = 8'b11001100;
     #10;
 
-    // Desliga escrita e lê endereço 0
+    // Desliga escrita e le endereço 0
     we = 0; address = 0; din = 8'b0;
     #20;
 
-    // Lê endereço 1
+    // Le endereço 1
     address = 1;
     #20;
 

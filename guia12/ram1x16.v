@@ -50,15 +50,14 @@ module tb_ram1x16;
     .din(din),
     .dout(dout)
   );
-
-  // Clock de 10 unidades de tempo
+  
   always #5 clk = ~clk;
 
   initial begin
     $display("Time | clear preset we din            dout");
     $monitor("%4t |    %b     %b  %b %016b %016b", $time, clear, preset, we, din, dout);
 
-    // Clear ativo (reset assíncrono)
+    // Clear ativo
     clear = 1; preset = 0; we = 0; din = 16'b0;
     #10 clear = 0;
 
@@ -70,7 +69,7 @@ module tb_ram1x16;
     #10 we = 1; din = 16'b1010101010101010;
     #10;
 
-    // Sem escrita, só leitura
+    // Sem escrita so leitura
     we = 0; din = 16'b0;
     #20;
 
@@ -78,7 +77,7 @@ module tb_ram1x16;
     we = 1; din = 16'b1100110011001100;
     #10;
 
-    // Sem escrita, mantém valor
+    // Sem escrita mantem valor
     we = 0; din = 16'b1111111111111111;
     #20;
 

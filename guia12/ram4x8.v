@@ -58,17 +58,17 @@ module tb_ram4x8;
     .dout(dout)
   );
 
-  always #5 clk = ~clk; // clock de 10 unidades de tempo
+  always #5 clk = ~clk;
 
   initial begin
     $display("Time | clr prst we addr din      dout");
     $monitor("%4t |  %b   %b   %b   %02b   %08b %08b", $time, clear, preset, we, address, din, dout);
 
-    // Reset assíncrono
+    // Reset
     clear = 1; preset = 0; we = 0; address = 0; din = 8'b0;
     #10 clear = 0;
 
-    // Preset assíncrono
+    // Preset
     #10 preset = 1;
     #10 preset = 0;
 

@@ -59,11 +59,11 @@ module tb_ram8x16;
     $display("Time | clr prst we addr  din           dout");
     $monitor("%4t |  %b   %b   %b  %03b  %016b %016b", $time, clear, preset, we, address, din, dout);
 
-    // Reset assíncrono
+    // Reset
     clear = 1; preset = 0; we = 0; address = 0; din = 0;
     #10 clear = 0;
 
-    // Preset assíncrono
+    // Preset
     #10 preset = 1;
     #10 preset = 0;
 
@@ -77,7 +77,7 @@ module tb_ram8x16;
     #10 address = 3'b110; din = 16'h1234;         // 0001001000110100
     #10 address = 3'b111; din = 16'hFEDC;         // 1111111011011100
 
-    // Parar escrita, ler dados de cada endereço
+    // Parar escrita ler dados de cada endereço
     we = 0; din = 0;
     #10 address = 3'b000;
     #10 address = 3'b001;

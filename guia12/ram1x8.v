@@ -37,7 +37,6 @@ module tb_ram1x8;
   reg [7:0] din = 8'b00000000;
   wire [7:0] dout;
 
-  // Instancia o ram1x8
   ram1x8 uut (
     .clk(clk),
     .we(we),
@@ -47,14 +46,13 @@ module tb_ram1x8;
     .dout(dout)
   );
 
-  // Clock de 10 unidades de tempo
   always #5 clk = ~clk;
 
   initial begin
     $display("Time | clear preset we din dout");
     $monitor("%4t |    %b     %b  %b %b %b", $time, clear, preset, we, din, dout);
 
-    // Reset assíncrono: clear ativo
+    //clear ativo
     clear = 1; preset = 0; we = 0; din = 8'b00000000;
     #10 clear = 0;
 
@@ -74,7 +72,7 @@ module tb_ram1x8;
     we = 1; din = 8'b11001100;
     #10;
 
-    // Sem escrita, mantém valor
+    // Sem escrita mantem valor
     we = 0; din = 8'b11111111;
     #20;
 
