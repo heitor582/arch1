@@ -4,8 +4,6 @@ Guia_1301.v
 */
 `include "ff.v"
 
-
-// --- Reverse Async Counter 6 bits ---
 module reverse_async_counter_6bit_jk (
     output [5:0] q,
     input clk,

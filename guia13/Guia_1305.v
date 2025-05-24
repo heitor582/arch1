@@ -4,7 +4,7 @@ Guia_1305.v
 */
 `include "ff.v"
 
-module counter3bit_t (
+module counter_seven_3bit_t (
     output [2:0] q,
     input clk,
     input preset,
@@ -23,7 +23,7 @@ module Guia1305;
     reg clear;
     wire [2:0] q;
 
-    counter3bit_t counter (
+    counter_seven_3bit_t counter (
         .q(q),
         .clk(clk),
         .preset(preset),

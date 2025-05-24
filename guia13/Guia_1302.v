@@ -4,8 +4,6 @@ Guia_1302.v
 */
 `include "ff.v"
 
-
-// --- Async Counter 6 bits ---
 module async_counter_6bit_jk (
     output [5:0] q,
     input clk,
