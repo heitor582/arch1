@@ -1,0 +1,27 @@
+// Guia_1500.txt
+// 867936-heitor_vieira
+//
+// Somar dois numeros de 8 bits
+// Armazenar o primeiro dado em 0100, por exemplo e atualizar as instrucoes
+// Armazenar o segundo dado em 0101
+// Armazenar o resultado em 0103
+// Area de código ; Significado         // Comentario
+
+LXI H,dado1       ; HL <- addr(dado1)   // endereco do dado1
+MOV A,M           ; A <- MEM [HL]       // A = MEM [dado1]
+INX H             ; HL <- HL+1          // endereco do dado2
+ADD M             ; A <- A + MEM [HL]   // A = A + MEM [dado2]
+STA dado3         ; MEM [dado3] <- A    // MEM [dado3] = A
+HLT               ; halt                // parar
+
+; Area de dados
+; dado1: 13h ; primeiro dado em hexadecimal
+; dado2: 14h ; segundo dado em hexadecimal
+; dado3: 15h ; resultado em hexadecimal
+
+//LXI H,0013
+//MOV A,M
+//INX H
+//ADD M
+//STA 0015
+//HLT

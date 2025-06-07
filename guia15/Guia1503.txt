@@ -1,0 +1,36 @@
+// Guia_1503.txt
+// 867936-heitor_vieira
+//
+// Area de código   ; Significado                   // Comentario
+LXI H,dado01        ; HL <- addr(dado01)            // carregar endereço dado01
+MOV A,M             ; A <- MEM[HL]                  // A = dado01
+
+LXI H,dado02        ; HL <- addr(dado02)            // carregar endereço dado02
+MOV B,M             ; B <- MEM[HL]                  // B = dado02
+
+SUB B               ; A = A - B                     // subtrair dado02 de A
+DAA                 ; ajustar decimal BCD           // corrigir resultado para BCD
+
+LXI H,dado03        ; HL <- addr(dado03)            // carregar endereço dado03
+MOV B,M             ; B <- MEM[HL]                  // B = dado03
+
+SUB B               ; A = A - B                     // subtrair dado03 de A
+DAA                 ; ajustar decimal BCD           // corrigir resultado para BCD
+
+LXI H,dado04        ; HL <- addr(dado04)            // carregar endereço dado04
+MOV B,M             ; B <- MEM[HL]                  // B = dado04
+
+ADD B               ; A = A + B                     // somar dado04 a A
+DAA                 ; ajustar decimal BCD           // corrigir resultado para BCD
+
+LXI H,dado05        ; HL <- addr(dado05)            // carregar endereço dado05 (resultado)
+MOV M,A             ; MEM[HL] <- A                  // armazenar resultado em dado05
+
+HLT                 ; halt                          // parar execução
+
+; Área de dados
+; dado1: 12h ; primeiro dado em hexadecimal
+; dado2: 13h ; segundo dado em hexadecimal
+; dado3: 14h ; terceiro dado em hexadecimal
+; dado4: 15h ; quarto dado em hexadecimal
+; dado5: 10h ; resultado em hexadecimal

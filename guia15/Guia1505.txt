@@ -1,0 +1,35 @@
+// Guia_1505.txt
+// 867936-heitor_vieira
+//
+// Area de código   ; Significado       // Comentario
+
+LXI H,dado1         ; HL <- addr(dado1) // endereco do dado1
+MOV A,M             ; A <- MEM [HL]     // A = MEM [dado1]
+
+ADD A               ; A <- A + MEM [HL] // A = A + A
+ADD A               ; A <- A + MEM [HL] // A = A + A
+ADD A               ; A <- A + MEM [HL] // A = A + A
+
+MOV B,A             ; B <- A
+
+INX H               ; HL <- HL+1        // endereco do dado2
+MOV A,M             ; A <- MEM [HL]     // A = MEM [dado2]
+MVI D,0h            ; D <- 0            // D = 0
+
+DIV_LOOP:
+    CPI 02H          ; Se A < 2, para
+    JC FIM_DIV       ; Se Carry, sair do loop
+    SUI 02H          ; A = A - 2
+    INR D            ; D = D + 1
+    JMP DIV_LOOP
+
+FIM_DIV:
+    MOV A,D             ; A <- MEM [D]     // A = dado2/2
+    ADD B               ; A <- A + B // A = A + B
+
+    STA dado3           ; MEM [dado3] <- A  // MEM [dado3] = A
+    HLT                 ; halt              // parar
+; Area de dados
+; dado1: 12h ; primeiro dado em hexadecimal
+; dado2: 13h ; segundo dado em hexadecimal
+; dado3: 10h ; resultado em hexadecimal

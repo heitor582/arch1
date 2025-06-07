@@ -1,0 +1,17 @@
+// Guia_1501.txt
+// 867936-heitor_vieira
+//
+// Area de código   ; Significado       // Comentario
+LXI H,dado1         ; HL <- addr(dado1) // endereco do dado1
+MOV A,M             ; A <- MEM [HL]     // A = MEM [dado1]
+INX H               ; HL <- HL+1        // endereco do dado2
+SUB M               ; A <- A - MEM [HL] // A = A - MEM[dado2]
+INX H               ; HL <- HL+1        // endereco do dado2
+ADD M               ; A <- A + MEM [HL] // A = A + MEM[dado3]
+STA dado4           ; MEM [dado4] <- A  // MEM [dado4] = A
+HLT                 ; halt              // parar
+; Area de dados
+; dado1: 12h ; primeiro dado em hexadecimal
+; dado2: 13h ; segundo dado em hexadecimal
+; dado3: 14h ; terceiro dado em hexadecimal
+; dado4: 10h ; resultado em hexadecimal

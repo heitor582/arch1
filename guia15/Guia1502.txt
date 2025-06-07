@@ -1,0 +1,60 @@
+// Guia_1502.txt
+// 867936-heitor_vieira
+//
+// Area de código   ; Significado       // Comentario
+
+LXI H,dado1         ; HL <- addr(dado1) // endereco do dado1
+MOV L,M             ; L <- MEM [HL]     // L = MEM [dado1]
+INX H               ; HL <- HL+1        // endereco do dado2
+MOV H,M             ; H <- MEM [HL]     // H = MEM [dado2]
+
+LXI B,dado3         ; HL <- addr(dado3) // endereco do dado3
+MOV C,M             ; C <- MEM [BC]     // L = MEM [dado3]
+INX B               ; HL <- HL+1        // endereco do dado4
+MOV B,M             ; B <- MEM [BC]     // H = MEM [dado4]
+
+DAD B               ; HL = HL + BC      // HL = HL + BC
+
+LXI B,dado5         ; HL <- addr(dado5) // endereco do dado5
+MOV C,M             ; C <- MEM [BC]     // L = MEM [dado6]
+INX B               ; HL <- HL+1        // endereco do dado6
+MOV B,M             ; B <- MEM [BC]     // H = MEM [dado6]
+
+MOV A, C            ; A = C
+CMA                 ; Complementa A (inverte bits)
+MOV C, A            ; C = complemento de 1
+
+MOV A, B            ; A = B
+CMA                 ; Complementa A (inverte bits)
+MOV B, A            ; B = complemento de 1
+
+INX B               ; BC = complemento de 2 (BC = ~BC + 1)
+
+DAD B               ; HL = HL + BC      // HL = HL + BC
+
+LXI B,dado7         ; HL <- addr(dado7) // endereco do dado7
+MOV C,M             ; C <- MEM [BC]     // L = MEM [dado8]
+INX B               ; HL <- HL+1        // endereco do dado8
+MOV B,M             ; B <- MEM [BC]     // H = MEM [dado8]
+
+DAD B               ; HL = HL + BC      // HL = HL + BC
+
+SHLD dado9          ; dado9 <- H, dado10 <- L
+HLT                 ; halt              // parar
+
+
+; Area de dados
+; dado1: 52h ; primeiro dado em hexadecimal
+; dado2: 53h ; primeiro segundo dado em hexadecimal
+
+; dado3: 54h ; segundo dado em hexadecimal
+; dado4: 55h ; segundo segundo dado em hexadecimal
+
+; dado5: 56h ; terceiro dado em hexadecimal
+; dado6: 57h ; terceiro segundo dado em hexadecimal
+
+; dado7: 58h ; quarto dado em hexadecimal
+; dado8: 59h ; quarto segundo dados em hexadecimal
+
+; dado9: 50h ; resultado em hexadecimal
+; dado10: 51h; resultado segundo em hexadecimal
