@@ -1,0 +1,32 @@
+// Guia_1606.txt
+// 867936-heitor_vieira
+//
+
+
+JMP MAIN // pular para a função principal
+
+MAIN:
+    LXI H, 0050h  // HL = 0050h (endereço do dado)
+    MOV B, M      // B = MEM[HL] (carrega o dado)
+    MVI C, 01h    // C = 1 (inicializa o primeiro número ímpar)
+    MVI D, 00h    // D = 0 (inicializa a soma)
+    MOV E, B      // E = B (cópia do dado para contagem)
+
+SUM_LOOP:
+    MOV A, D      // A = D (carrega a soma atual)
+    ADD C         // A = A + C (soma o próximo número ímpar)
+    MOV D, A      // D = A (atualiza a soma)
+
+    INX C         // C = C + 1 (incrementa para o próximo número ímpar)
+    INX C         // C = C + 1 (incrementa para o próximo número ímpar)
+
+    DCR E         // Decrementa E
+    JNZ SUM_LOOP  // Se E não for zero, repete o loop
+
+    MOV A, D      // Move o resultado final para o acumulador
+    STA 0051h     // Armazena o resultado em MEM[0051h]
+
+    HLT           // Termina o programa
+
+END:
+

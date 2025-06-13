@@ -1,0 +1,45 @@
+// Guia_1602.txt
+// 867936-heitor_vieira
+//
+
+
+
+JMP MAIN // pular para a função principal
+
+F_SUB:
+    POP H       // Recupera o endereço de retorno
+    POP B       // Recupera o primeiro parâmetro (B)
+    POP C       // Recupera o segundo parâmetro (C)
+    MOV A, B    // A = B
+    SUB C       // A = A - C
+    PUSH H      // Restaurar o endereço de retorno
+    MOV L, A    // Coloca o resultado no registrador L
+    RET         // Retorna para a função chamadora
+
+MAIN:
+    LXI H, 0050h  // HL = 0050h (endereço do 1º dado)
+    MOV B, M      // B = MEM[HL] (carrega o 1º dado)
+    INX H         // HL = HL + 1 (endereço do 2º dado)
+    MOV C, M      // C = MEM[HL] (carrega o 2º dado)
+    MVI D, 00h    // D = 0 (inicializa o contador de quociente)
+
+LOOP:
+    MOV A, B      // A = B (dividendo atual)
+    CMP C         // Compara A com C (divisor)
+    JC DONE       // Se A < C, termina o loop
+
+    PUSH B        // Empilha o dividendo atual (B)
+    PUSH C        // Empilha o divisor (C)
+    CALL F_SUB    // Chama a função de subtração
+    MOV B, L      // B = L (atualiza o dividendo com o resultado da subtração)
+
+    INX D         // Incrementa o contador de quociente
+    JMP LOOP      // Repete o loop
+
+DONE:
+    MOV A, D      // Move o valor do contador de quociente para o acumulador
+    STA 0052h     // Armazena o resultado em MEM[0052h]
+    HLT           // Termina o programa
+
+END:
+

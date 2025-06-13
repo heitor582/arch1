@@ -1,0 +1,68 @@
+// Guia_1605.txt
+// 867936-heitor_vieira
+//
+
+
+JMP MAIN // pular para a função principal
+
+F_HI:
+    POP H       // Recupera o endereço de retorno
+    POP B       // Recupera o parâmetro (valor BCD)
+    MOV A, B    // A = B
+    ANI 0F0h    // A = A & F0h (mascara para manter apenas o nibble alto)
+    RRC         // Rotaciona A à direita com carry
+    RRC         // Rotaciona A à direita com carry
+    RRC         // Rotaciona A à direita com carry
+    RRC         // Rotaciona A à direita com carry
+    PUSH H      // Restaurar o endereço de retorno
+    MOV L, A    // Coloca o resultado no registrador L
+    RET         // Retorna para a função chamadora
+
+F_LO:
+    POP H       // Recupera o endereço de retorno
+    POP B       // Recupera o parâmetro (valor BCD)
+    MOV A, B    // A = B
+    ANI 0Fh     // A = A & 0Fh (mascara para manter apenas o nibble baixo)
+    PUSH H      // Restaurar o endereço de retorno
+    MOV L, A    // Coloca o resultado no registrador L
+    RET         // Retorna para a função chamadora
+
+MAIN:
+    LXI H, 0050h  // HL = 0050h (endereço do valor BCD)
+    MOV B, M      // B = MEM[HL] (carrega o valor BCD)
+
+    // Extrair o nibble alto e multiplicar por 10
+    PUSH B        // Empilha o valor BCD
+    CALL F_HI     // Chama a função F_HI para extrair o nibble alto
+    MOV A, L      // A = L (nibble alto)
+    MVI D, 0Ah    // D = 10
+    CALL MUL      // Multiplica o nibble alto por 10
+    MOV D, A      // D = resultado (nibble alto * 10)
+
+    // Extrair o nibble baixo
+    PUSH B        // Empilha o valor BCD novamente
+    CALL F_LO     // Chama a função F_LO para extrair o nibble baixo
+    MOV E, L      // E = L (nibble baixo)
+
+    // Somar os resultados
+    MOV A, D      // A = nibble alto * 10
+    ADD E         // A = A + E (nibble baixo)
+    STA 0051h     // Armazena o resultado em MEM[0051h]
+
+    HLT           // Termina o programa
+
+END:
+
+MUL:
+    MOV A, B      // A = B
+    MOV B, C      // B = C
+    MVI C, 00h    // C = 0 (inicializa o resultado)
+MUL_LOOP:
+    DCR B         // Decrementa B
+    JZ MUL_DONE   // Se B for zero, termina o loop
+    ADD A         // A = A + acumulador atual
+    JMP MUL_LOOP  // Repete o loop
+MUL_DONE:
+    MOV A, C      // Move o resultado para o acumulador
+    RET           // Retorna
+

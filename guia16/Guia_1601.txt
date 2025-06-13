@@ -1,0 +1,44 @@
+// Guia_1601.txt
+// 867936-heitor_vieira
+//
+
+
+JMP MAIN // pular para a função principal
+
+F_ADD:
+    POP H       // Recupera o endereço de retorno
+    POP B       // Recupera o primeiro parâmetro (B)
+    POP C       // Recupera o segundo parâmetro (C)
+    MOV A, B    // A = B
+    ADD C       // A = A + C
+    PUSH H      // Restaurar o endereço de retorno
+    MOV L, A    // Coloca o resultado no registrador L
+    RET         // Retorna para a função chamadora
+
+MAIN:
+    LXI H, 0050h  // HL = 0050h (endereço do 1º dado)
+    MOV B, M      // B = MEM[HL] (carrega o 1º dado)
+    INX H         // HL = HL + 1 (endereço do 2º dado)
+    MOV C, M      // C = MEM[HL] (carrega o 2º dado)
+    MVI D, 00h    // D = 0 (inicializa o acumulador de produto)
+    MOV E, C      // E = C (número de vezes para somar)
+
+LOOP:
+    MOV A, E      // A = E (contador de iterações)
+    CPI 00h       // Compara A com 0
+    JZ DONE       // Se A for 0, termina o loop
+
+    PUSH B        // Empilha o primeiro parâmetro (B)
+    PUSH D        // Empilha o acumulador atual (D)
+    CALL F_ADD    // Chama a função de soma
+    MOV D, L      // D = L (atualiza o acumulador com o resultado da soma)
+
+    DCR E         // Decrementa o contador de iterações
+    JMP LOOP      // Repete o loop
+
+DONE:
+    STA 0052h     // Armazena o resultado em MEM[0052h]
+    HLT           // Termina o programa
+
+END:
+

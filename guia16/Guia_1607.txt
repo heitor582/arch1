@@ -1,0 +1,49 @@
+// Guia_1607.txt
+// 867936-heitor_vieira
+//
+
+
+JMP MAIN  // pular para a função principal
+
+MAIN:
+    LXI H, 0050h  // HL = 0050h (endereço do dado)
+    MOV B, M      // B = MEM[HL] (carrega o dado)
+    MVI D, 01h    // D = 1 (inicializa o fatorial)
+    MVI E, 01h    // E = 1 (inicializa o contador)
+
+    // Verifica se o dado é zero, fatorial de 0 é 1
+    MOV A, B
+    CPI 00h
+    JZ DONE
+
+FACTORIAL_LOOP:
+    MOV A, D      // A = D (carrega o valor fatorial atual)
+    CALL MUL      // Multiplica A pelo contador E
+    MOV D, A      // D = A (atualiza o valor fatorial)
+
+    INX E         // E = E + 1 (incrementa o contador)
+    MOV A, E      // A = E
+    CMP B         // Compara A com o valor do dado original
+    JNZ FACTORIAL_LOOP  // Se A não for igual a B, repete o loop
+
+DONE:
+    MOV A, D      // Move o resultado final para o acumulador
+    STA 0051h     // Armazena o resultado em MEM[0051h]
+
+    HLT           // Termina o programa
+
+END:
+
+MUL:
+    PUSH B        // Salva B no stack
+    PUSH D        // Salva D no stack
+    MVI B, 00h    // B = 0 (inicializa o acumulador do produto)
+MUL_LOOP:
+    ADD D         // A = A + D (acumula o produto)
+    DCR E         // Decrementa E
+    JNZ MUL_LOOP  // Se E não for zero, repete o loop
+    MOV D, A      // Move o resultado para D
+    POP D         // Restaura D do stack
+    POP B         // Restaura B do stack
+    RET           // Retorna para a função chamadora
+

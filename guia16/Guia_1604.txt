@@ -1,0 +1,35 @@
+// Guia_1604.txt
+// 867936-heitor_vieira
+//
+
+
+JMP MAIN // pular para a função principal
+
+MAIN:
+    LXI H, 004Fh  // HL = 004Fh (endereço do tamanho do array)
+    MOV C, M      // C = MEM[HL] (carrega o tamanho do array)
+    INX H         // HL = HL + 1 (aponta para o primeiro elemento do array)
+    MOV A, M      // A = MEM[HL] (carrega o primeiro elemento do array)
+    MOV B, A      // B = A (inicializa o maior valor encontrado)
+
+LOOP:
+    DCR C         // Decrementa o contador de elementos restantes
+    JZ DONE       // Se C for zero, termina o loop
+
+    INX H         // HL = HL + 1 (aponta para o próximo elemento)
+    MOV A, M      // A = MEM[HL] (carrega o próximo elemento)
+    CMP B         // Compara A com B (maior valor atual)
+    JC NEXT       // Se A < B, pula para a próxima iteração
+    MOV B, A      // B = A (atualiza o maior valor encontrado)
+
+NEXT:
+    JMP LOOP      // Repete o loop
+
+DONE:
+    MOV A, B      // Move o maior valor encontrado para o acumulador
+    LXI H, 0050h  // HL = 0050h (endereço do primeiro elemento do arranjo)
+    MOV M, A      // Armazena o maior valor em MEM[0050h]
+    HLT           // Termina o programa
+
+END:
+
